@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<blackrock translate="label" module="shippingalert">
+			<label>BlackRock</label>
+			<sort_order>100</sort_order>
+		</blackrock>
+    </tabs>
+    
+    <sections>
+	    <blackrock_options translate="label" module="shippingalert">
+	    	<label>Shipping Alert</label>
+	    	<tab>blackrock</tab>
+	    	<frontend_type>text</frontend_type>
+	    	<sort_order>1000</sort_order>
+	    	<show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+            	<!-- General Settings -->
+	            <general translate="label">
+	            	<label>General Settings</label>
+	            	<frontend_type>text</frontend_type>
+	            	<sort_order>10</sort_order>
+	            	<show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<enable_module translate="label comment">
+	                    	<label>Enabled</label>
+	                    	<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Enable/Disable Module]]></comment>
+	                    </enable_module>
+	                    <cartrule_select translate="label comment">
+	                    	<label>Select Shopping Cart Rule</label>
+	                    	<frontend_type>select</frontend_type>
+	                    	<source_model>shippingalert/promos</source_model>
+	                    	<sort_order>2</sort_order>
+	                    	<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Choose the promotion to display]]></comment>
+	                    </cartrule_select>
+                    </fields>
+	            </general>
+	            
+	            <!-- Appearance Settings -->
+	            <appearance translate="label">
+	            	<label>Appearance</label>
+	            	<frontend_type>text</frontend_type>
+	            	<sort_order>20</sort_order>
+	            	<show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<message translate="label comment">
+                    		<label>Custom Message</label>
+                    		<frontend_type>Select</frontend_type>
+                    		<source_model>shippingalert/message</source_model>
+                    		<comment><![CDATA[If enabled display a custom message in lieu of Promotion Title]]></comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</message>
+                    	<custom_heading translate="label comment">
+	                    	<label>Heading Text</label>
+	                    	<frontend_type>text</frontend_type>
+	                    	<comment><![CDATA[Enter text heading to be displayed]]></comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                            	<message>2</message>
+                            </depends>
+                       	</custom_heading>
+                       	<custom_message translate="label comment">
+	                    	<label>Message Text</label>
+	                    	<frontend_type>textarea</frontend_type>
+	                    	<comment><![CDATA[Enter text to be displayed. Limit text to 160 characters or less.]]></comment>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                            	<message>2</message>
+                            </depends>
+                       	</custom_message>
+                       	
+                    	<font translate="label comment">
+	                    	<label>Font Replacement</label>
+                            <frontend_type>Select</frontend_type>
+                            <source_model>shippingalert/font</source_model>
+                            <comment><![CDATA[If disabled the standard font will be "Arial"]]></comment>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                            	<message>2</message>
+                            </depends> 
+	                    </font>
+	                    <gfont translate="label comment">
+                            <label>Google Fonts</label>
+                            <frontend_type>Select</frontend_type>
+                            <source_model>shippingalert/gfont</source_model>
+                            <frontend_model>shippingalert/adminhtml_system_config_form_field_font</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <font>2</font>
+                            </depends>
+                        </gfont>
+                    </fields>
+	            </appearance>
+	            
+	            <!-- Design Settings -->
+	            <design translate="label">
+	            	<label>Design</label>
+	            	<frontend_type>text</frontend_type>
+	            	<sort_order>30</sort_order>
+	            	<show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<background_image>                      
+                            <label>Upload Background Image</label>
+                            <frontend_type>image</frontend_type>
+                            <comment><![CDATA[JPG,GIF,PNG]]></comment>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media/wysiwyg" scope_info="1">images</upload_dir>
+                            <base_url type="media" scope_info="1">images</base_url>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                                            
+                        </background_image>
+	                    <progress_alignment translate="label comment">
+	                    	<label>Progress Bar Alignment</label>
+	                    	<frontend_type>select</frontend_type>
+	                    	<source_model>shippingalert/alignment</source_model>
+	                    	<sort_order>10</sort_order>
+	                    	<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Select which side the progress bar should display on. Right or Left]]></comment>
+	                    </progress_alignment>
+	                    <progress_color translate="label comment">
+	                    	<label>Progress Bar Color</label>
+	                    	<frontend_type>text</frontend_type>
+	                    	<validate>color</validate>
+	                    	<sort_order>20</sort_order>
+	                    	<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Enter the HEX color value or use the color picker to select the color of the progress bar.]]></comment>
+	                    </progress_color>
+	                    <progress_border>
+	                    	<label>Progress Border Color</label>
+	                    	<frontend_type>text</frontend_type>
+	                    	<validate>color</validate>
+	                    	<sort_order>20</sort_order>
+	                    	<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Enter the HEX color value or use the color picker to select the color of the progress bar border.]]></comment>
+	                    </progress_border>
+	                    <font_color translate="label comment">
+	                    	<label>Font Color</label>
+	                    	<frontend_type>text</frontend_type>
+	                    	<validate>color</validate>
+	                    	<sort_order>30</sort_order>
+	                    	<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[Enter the HEX color value or use the color picker to select the color of text to display.]]></comment>
+	                    </font_color>                    
+                    </fields>
+	            </design>
+            </groups>
+	    </blackrock_options>
+    </sections>
+</config>

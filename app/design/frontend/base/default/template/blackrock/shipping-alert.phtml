@@ -1,0 +1,37 @@
+<?php
+	$_alert = Mage::helper('shippingalert');
+
+	if($_alert->getIsEnabled() == true){
+		if($_alert->getCartPromotion()->getIsActive()){
+			
+			if($_alert->getFontEnabled() == 2){
+				echo '<link href="http://fonts.googleapis.com/css?family=' . str_replace(' ', '+', $_alert->getFontName()) . ':200,300,400,500,600,700,800" rel="stylesheet" type="text/css">';
+			}
+		
+			$subTotal  = Mage::getSingleton('checkout/session')->getQuote()->getSubtotal();
+			$promoVal  = $_alert->getPromotionValue();
+			$totalDiff = number_format($promoVal - $subTotal, 0);
+			$progress  = number_format(($subTotal / $promoVal) * 100);
+?>
+		<div class="shipping-alert" <?php if($_alert->getDesignBackground() != ''): ?>style="background: transparent url(/media/images/<?php echo $_alert->getDesignBackground(); ?>) no-repeat;"<?php endif; ?>>
+			<div class="alert-text <?php echo $_alert->getTextAlignment() ?>">
+				<h2 style="color: #<?php echo $_alert->getTextColor() ?>; font-family: <?php echo $_alert->getFontName() ?>,sans-serif;"><?php echo $_alert->getMessageHeading() ?></h2>
+				<p style="color: #<?php echo $_alert->getTextColor() ?>"><?php echo $_alert->getMessageText() ?></p>
+			</div>
+			
+			<div class="alert-<?php echo $_alert->getDesignAlignment() ?> promoprogress-bar">
+				<?php if($subTotal < $promoVal): ?>
+					<p style="color: #<?php echo $_alert->getTextColor() ?>">Receive Free Shipping if you spend $<?php echo $totalDiff ?> more</p>
+				<?php else: ?>
+					<p style="color: #<?php echo $_alert->getTextColor() ?>">Your Order Qualifies for Free Shipping</p>
+				<?php endif; ?>
+				
+				<div class="progress-container align-<?php echo $_alert->getDesignAlignment() ?>" style="border: 1px solid #<?php echo $_alert->getBorderColor() ?>;">
+				    <div class="progress-bar" style="width: <?php echo $progress ?>%; background-color: #<?php echo $_alert->getProgressColor() ?>"></div>
+				</div>
+			</div>
+		</div>			
+<?php
+		}
+	}
+?>

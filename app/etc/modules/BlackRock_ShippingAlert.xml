@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<BlackRock_ShippingAlert>
+			<active>true</active>
+			<codePool>local</codePool>
+		</BlackRock_ShippingAlert>
+	</modules>
+</config>

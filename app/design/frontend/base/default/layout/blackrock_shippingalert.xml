@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout>
+	<default>
+		<reference name="head">
+			<action method="addItem"><type>skin_css</type><name>css/blackrock/shipping-alert.css</name></action>
+		</reference>
+	</default>
+	
+	<checkout_cart_index>
+		<reference name="top.menu">
+			<block type="core/template" name="shippingalert" as="shippingalert" template="blackrock/shipping-alert.phtml" after="catalog.topnav" />
+		</reference>
+	</checkout_cart_index>
+	
+	<checkout_onepage_index>
+		<reference name="top.menu">
+			<block type="core/template" name="shippingalert" as="shippingalert" template="blackrock/shipping-alert.phtml" after="catalog.topnav" />
+		</reference>
+	</checkout_onepage_index>
+</layout>
