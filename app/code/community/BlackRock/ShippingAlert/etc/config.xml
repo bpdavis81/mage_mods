@@ -45,7 +45,7 @@
 		<layout>
 			<updates>
 				<module>
-					<file>blackrock/shippingalert.xml</file>
+					<file>blackrock_shippingalert.xml</file>
 				</module>
 			</updates>
 		</layout>

@@ -3,7 +3,7 @@
 	<modules>
 		<BlackRock_ShippingAlert>
 			<active>true</active>
-			<codePool>local</codePool>
+			<codePool>community</codePool>
 		</BlackRock_ShippingAlert>
 	</modules>
 </config>

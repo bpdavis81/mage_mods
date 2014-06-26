@@ -16,7 +16,6 @@ class BlackRock_ShippingAlert_Helper_Data extends Mage_Core_Helper_Abstract
 		return Mage::getStoreConfig('blackrock_options/design');
 	}
 	
-	
 	public function getIsEnabled()
 	{
 	    $_enabled = Mage::helper('shippingalert')->getGeneralSettings();
@@ -123,5 +122,26 @@ class BlackRock_ShippingAlert_Helper_Data extends Mage_Core_Helper_Abstract
 	{
 		$_proColor = Mage::helper('shippingalert')->getDesignSettings();
 		return $_proColor['progress_color'];
+	}
+	
+	public function getSubtotal()
+	{
+		return Mage::getSingleton('checkout/session')->getQuote()->getSubtotal();
+	}
+	
+	public function getDifference(){
+		$promoVal = $this->getPromotionValue();
+		$subTotal = $this->getSubtotal();
+		
+		$difference = number_format($promoVal - $subTotal, 0);
+		return $difference;
+	}
+	
+	public function getProgress(){
+		$promoVal = $this->getPromotionValue();
+		$subTotal = $this->getSubtotal();
+		
+		$progress = number_format(($subTotal / $promoVal) * 100);
+		return $progress;
 	}
 }
