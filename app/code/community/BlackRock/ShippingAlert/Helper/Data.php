@@ -42,7 +42,9 @@ class BlackRock_ShippingAlert_Helper_Data extends Mage_Core_Helper_Abstract
 			$_conditions = unserialize($_conditions);
 			
 			foreach($_conditions['conditions'] as $_condition){
-				return $_condition;
+				if($_condition['attribute'] == 'base_subtotal'){
+					return $_condition;
+				}
 			}
 		}
 	}
@@ -63,6 +65,12 @@ class BlackRock_ShippingAlert_Helper_Data extends Mage_Core_Helper_Abstract
 		$_fontName = Mage::helper('shippingalert')->getAppearanceSettings();
 		return $_fontName['gfont'];
 	}
+
+	public function getMessageEnabled(){
+		$_messageEnabled = Mage::helper('shippingalert')->getAppearanceSettings();
+		
+		return $_messageEnabled['message'];
+	}
 	
 	public function getMessageHeading()
 	{
@@ -70,24 +78,27 @@ class BlackRock_ShippingAlert_Helper_Data extends Mage_Core_Helper_Abstract
 		
 		if($_messageEnabled['message'] == 2){
 			$_messageHead = $_messageEnabled['custom_heading'];
-		}
-		return $_messageHead;
+			return $_messageHead;
+		}		
 	}
 	
+
 	public function getMessageText()
 	{
 		$_messageEnabled = Mage::helper('shippingalert')->getAppearanceSettings();
 		
 		if($_messageEnabled['message'] == 2){
 			$_messageText = $_messageEnabled['custom_message'];
-		}
-		return $_messageText;
+			return $_messageText;
+		}	
 	}
 	
 	public function getDesignBackground()
 	{	
 		$_background = Mage::helper('shippingalert')->getDesignSettings();
-		return $_background['background_image'];
+		if(isset($_background['background_image'])){
+			return $_background['background_image'];
+		}
 	}
 	
 	public function getDesignAlignment()

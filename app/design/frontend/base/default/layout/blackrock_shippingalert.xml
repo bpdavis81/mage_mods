@@ -13,9 +13,12 @@
 		</reference>
 	</checkout_cart_index>
 	
+<!-- Uncomment if you want to display at checkout in addition to cart (displays below topnav) -->
+<!--
 	<checkout_onepage_index>
 		<reference name="top.menu">
 			<block type="core/template" name="shippingalert" as="shippingalert" template="blackrock/shipping-alert.phtml" after="catalog.topnav" />
 		</reference>
 	</checkout_onepage_index>
+-->
 </layout>

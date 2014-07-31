@@ -1,30 +1,34 @@
 <?php
-	$_alert = Mage::helper('shippingalert');
+	$_helper = Mage::helper('shippingalert');
 
-	if($_alert->getIsEnabled() == true){
-		if($_alert->getCartPromotion()->getIsActive()){
+	if($_helper->getIsEnabled() == true){
+		if($_helper->getCartPromotion()->getIsActive()){
 			
-			if($_alert->getFontEnabled() == 2){
-				echo '<link href="http://fonts.googleapis.com/css?family=' . str_replace(' ', '+', $_alert->getFontName()) . ':200,300,400,500,600,700,800" rel="stylesheet" type="text/css">';
+			if($_helper->getFontEnabled() == 2){
+				echo '<link href="http://fonts.googleapis.com/css?family=' . str_replace(' ', '+', $_helper->getFontName()) . ':200,300,400,500,600,700,800" rel="stylesheet" type="text/css">';
 			}
 ?>
-		<div class="shipping-alert" <?php if($_alert->getDesignBackground() != ''): ?>style="background: transparent url(/media/images/<?php echo $_alert->getDesignBackground(); ?>) no-repeat;"<?php endif; ?>>
-			<div class="alert-text <?php echo $_alert->getTextAlignment() ?>">
-				<h2 style="color: #<?php echo $_alert->getTextColor() ?>; font-family: <?php echo $_alert->getFontName() ?>,sans-serif;"><?php echo $_alert->getMessageHeading() ?></h2>
-				<p style="color: #<?php echo $_alert->getTextColor() ?>"><?php echo $_alert->getMessageText() ?></p>
+		<div class="clear"></div>
+		<div class="shipping-alert" <?php if($_helper->getDesignBackground() != ''): ?>style="background: transparent url(/media/images/<?php echo $_helper->getDesignBackground(); ?>) no-repeat;"<?php endif; ?>>
+			<?php if($_helper->getMessageEnabled() == 2): ?>
+			<div class="alert-text <?php echo $_helper->getTextAlignment() ?>">
+				<h2 style="color: #<?php echo $_helper->getTextColor() ?>; font-family: <?php echo $_helper->getFontName() ?>,sans-serif;"><?php echo $_helper->getMessageHeading() ?></h2>
+				<p style="color: #<?php echo $_helper->getTextColor() ?>"><?php echo $_helper->getMessageText() ?></p>
 			</div>
+			<?php endif; ?>
 			
-			<div class="alert-<?php echo $_alert->getDesignAlignment() ?> promoprogress-bar">
-				<?php if($_alert->getSubtotal() < $_alert->getPromotionValue()): ?>
-					<p style="color: #<?php echo $_alert->getTextColor() ?>">Receive Free Shipping if you spend $<?php echo $_alert->getDifference() ?> more</p>
+			<div class="alert-<?php echo $_helper->getDesignAlignment() ?> promoprogress-bar">
+				<?php if($_helper->getSubtotal() < $_helper->getPromotionValue()): ?>
+					<p style="color: #<?php echo $_helper->getTextColor() ?>">Receive Free Shipping if you spend $<?php echo $_helper->getDifference() ?> more</p>
 				<?php else: ?>
-					<p style="color: #<?php echo $_alert->getTextColor() ?>">Your Order Qualifies for Free Shipping</p>
+					<p style="color: #<?php echo $_helper->getTextColor() ?>">Your Order Qualifies for Free Shipping</p>
 				<?php endif; ?>
-				<div class="progress-container align-<?php echo $_alert->getDesignAlignment() ?>" style="border: 1px solid #<?php echo $_alert->getBorderColor() ?>;">
-				    <div class="progress-bar" style="width: <?php echo $_alert->getProgress() ?>%; background-color: #<?php echo $_alert->getProgressColor() ?>"></div>
+				<div class="progress-container align-<?php echo $_helper->getDesignAlignment() ?>" style="border: 1px solid #<?php echo $_helper->getBorderColor() ?>;">
+				    <div class="progress-bar" style="width: <?php echo $_helper->getProgress() ?>%; background-color: #<?php echo $_helper->getProgressColor() ?>"></div>
 				</div>
 			</div>
-		</div>			
+		</div>
+		<div class="clear"></div>			
 <?php
 		}
 	}
